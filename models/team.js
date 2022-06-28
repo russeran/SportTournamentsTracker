@@ -2,6 +2,28 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const playerSchema = new Schema({
+        name: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+
+        age: { type: Number },
+
+        position: {
+            type: String,
+            enum: ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+        },
+        currentTeam: String,
+
+
+    }, {
+        timestamps: true
+    }
+
+)
+
 
 const teamSchema = new Schema({
     name: {
@@ -19,7 +41,7 @@ const teamSchema = new Schema({
         enum: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     },
 
-    continet: {
+    continent: {
         type: String,
         enum: ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
     },

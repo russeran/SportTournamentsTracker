@@ -1,11 +1,13 @@
 <%- include('../partials/header') %>
 
-    <table>
+    <table id="allteams" class="table">
         <thead>
             <tr>
                 <th>Team</th>
-                <th>Continent</th>
                 <th>World Cup Title</th>
+                <th>Group</th>
+                <th>Continent</th>
+                <th>Squad</th>
                 <th></th>
             </tr>
         </thead>
@@ -16,7 +18,7 @@
                         <%= team.name %>
                     </td>
                     <td>
-                        <%= team.worldCupTitle %>
+                        <%= team.worldCupTitles %>
                     </td>
                     <td>
                         <%= team.group %>
