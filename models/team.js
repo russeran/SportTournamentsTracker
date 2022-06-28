@@ -5,22 +5,22 @@ const Schema = mongoose.Schema;
 
 const teamSchema = new Schema({
     name: {
-        String,
+        type: String,
         required: true
     },
 
-    wCupTitles: {
-        Number,
+    worldCupTitles: {
+        type: Number,
         enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
 
     group: {
-        String,
+        type: String,
         enum: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     },
 
     continet: {
-        String,
+        type: String,
         enum: ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
     },
 
@@ -28,10 +28,10 @@ const teamSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Player'
     }],
-    {
-        timestamps: true
-    }
 
+
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('Team', teamSchema);

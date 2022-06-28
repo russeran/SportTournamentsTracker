@@ -1,0 +1,44 @@
+<%- include('../partials/header')  %>
+
+    <form id="new-team" action="/teams" method="POST">
+
+        <label for="name">Team Name</label>
+        <input type="text" name="name" id="name">
+        <label for="worldCupTitle">World Cup Title</label>
+        <select name="worldCupTitle">
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+        <option value="6" >6</option>
+        <option value="7" >7</option>
+    </select>
+        <label for="group">Group</label>
+        <select name="group">
+        <option value="A" >A</option>
+        <option value="B" >B</option>
+        <option value="C" >C</option>
+        <option value="D" >D</option>
+        <option value="E" >E</option>
+        <option value="F" >F</option>
+        <option value="G" >G</option>
+        <option value="H" >H</option>
+    </select>
+        <label for="continent">Continent</label>
+        <select name="continent">
+        <option value="Africa" >Africa</option>
+        <option value="Asia" >Asia</option>
+        <option value="Europe" >Europe</option>
+        <option value="North America" >North America</option>
+        <option value="Oceania" >Oceania</option>
+        <option value="South America" >South America</option>
+    </select>
+        <label for="Squad">Squad</label>
+        <input type="text" name="squad" id="squad">
+        <input type="submit" value="Create Team">
+    </form>
+
+
+
+    <%- include('../partials/footer')  %>
