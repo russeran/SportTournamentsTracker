@@ -45,12 +45,7 @@ const teamSchema = new Schema({
         type: String,
         enum: ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
     },
-
-    squad: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Player'
-    }],
-
+    players: [playerSchema]
 
 }, {
     timestamps: true

@@ -1,11 +1,14 @@
 <%- include('../partials/header')  %>
+    <br>
+    <div class="newteam-form">
 
-    <form id="new-team" action="/teams" method="POST">
-
-        <label for="name">Team Name</label>
-        <input type="text" name="name" id="name">
-        <label for="worldCupTitle">World Cup Title</label>
-        <select name="worldCupTitles">
+        <form id="new-team" action="/teams" method="POST">
+            <br>
+            <h2 style="background-color: rgb(35, 194, 88);">New Team</h2>
+            <label for="name">Team Name</label>
+            <input type="text" name="name" id="name">
+            <label for="worldCupTitle">World Cup Title</label>
+            <select name="worldCupTitles">
         <option value="0" >0</option>
         <option value="1" >1</option>
         <option value="2" >2</option>
@@ -15,8 +18,8 @@
         <option value="6" >6</option>
         <option value="7" >7</option>
     </select>
-        <label for="group">Group</label>
-        <select name="group">
+            <label for="group">Group</label>
+            <select name="group">
         <option value="A" >A</option>
         <option value="B" >B</option>
         <option value="C" >C</option>
@@ -26,8 +29,8 @@
         <option value="G" >G</option>
         <option value="H" >H</option>
     </select>
-        <label for="continent">Continent</label>
-        <select name="continent">
+            <label for="continent">Continent</label>
+            <select name="continent">
         <option value="Africa" >Africa</option>
         <option value="Asia" >Asia</option>
         <option value="Europe" >Europe</option>
@@ -35,11 +38,9 @@
         <option value="Oceania" >Oceania</option>
         <option value="South America" >South America</option>
     </select>
-        <label for="Squad">Squad</label>
-        <input type="text" name="squad" id="squad">
-        <input type="submit" value="Create Team">
-    </form>
+            <input type="submit" value="Add Team">
+        </form>
 
-
+    </div>
 
     <%- include('../partials/footer')  %>

@@ -1,32 +1,20 @@
-var Team = require('../models/team');
-
+const Team = require('../models/team');
+const Game = require('../models/game');
 
 module.exports = {
-    index,
-    show,
     new: newTeam,
     create,
-}
-
-function index(req, res) {
-    Team.find({}, function(err, teams) {
-        res.render('teams/index', { title: 'World Cup Teams', teams });
-    });
+    index,
+    show,
 }
 
 function newTeam(req, res) {
-    res.render('teams/new', { title: 'New Team' });
-}
-
-function show(req, res) {
-    Team.findById(req.params.id, function(err, team) {
-        res.render('teams/show', { title: team.name, team });
-    });
+    res.render('teams/new');
 }
 
 function create(req, res) {
     for (let key in req.body) {
-        req.body[key] = req.body[key].trim();
+        if (req.body[key] === '') delete req.body[key]
     }
     const team = new Team(req.body);
     team.save(function(err) {
@@ -36,4 +24,21 @@ function create(req, res) {
         res.redirect('/teams');
     })
 
+}
+
+function index(req, res) {
+    Team.find({}, function(err, teams) {
+        res.render('teams/index', { teams });
+    });
+}
+
+
+
+
+function show(req, res) {
+    Team.findById(req.params.id, function(err, team) {
+        Game.find({ team: team._id }, function(err, games) {
+            res.render('teams/show', { team, games });
+        });
+    })
 }
