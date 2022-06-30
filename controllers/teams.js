@@ -6,6 +6,7 @@ module.exports = {
     create,
     index,
     show,
+    delete: deleteTeam,
 }
 
 function newTeam(req, res) {
@@ -32,13 +33,16 @@ function index(req, res) {
     });
 }
 
-
-
-
 function show(req, res) {
     Team.findById(req.params.id, function(err, team) {
         Game.find({ team: team._id }, function(err, games) {
             res.render('teams/show', { team, games });
         });
+    })
+}
+
+function deleteTeam(req, res) {
+    Team.findByIdAndRemove(req.params.id, function(err) {
+        res.redirect('/teams');
     })
 }

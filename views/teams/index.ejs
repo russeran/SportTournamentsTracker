@@ -27,7 +27,7 @@
                     </td>
 
                     <td><a href="/teams/<%= team.id %>">View Details</a></td>
-
+                    <form action="/teams/<%= team.id%>?_method=DELETE" method="POST"> <button type="submit">DELETE</button></form>
                 </tr>
                 <% }); %>
 
