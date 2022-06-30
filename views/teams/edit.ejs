@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+
+    <div>
+        <form action="/teams/<%= team.id %>?_method=PUT" method="POST" autocomplete="off">
+
+            <input type="text" name="name" value="<%= team.name %>">
+            <input type="text" name="worldCupTitles" value="<%= team.worldCupTitles %>">
+            <input type="text" name="group" value="<%= team.group %>">
+            <input type="text" name="continent" value="<%= team.continent %>">
+            <button type="submit">Update</button>
+        </form>
+
+    </div>
+
+
+
+
+
+    <%- include('../partials/footer') %>

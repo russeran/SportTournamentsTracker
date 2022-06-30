@@ -7,6 +7,8 @@ module.exports = {
     index,
     show,
     delete: deleteTeam,
+    edit,
+    update: updateTeam
 }
 
 function newTeam(req, res) {
@@ -44,5 +46,17 @@ function show(req, res) {
 function deleteTeam(req, res) {
     Team.findByIdAndRemove(req.params.id, function(err) {
         res.redirect('/teams');
+    })
+}
+
+function edit(req, res) {
+    Team.findById(req.params.id, function(err, team) {
+        res.render('teams/edit', { team });
+    })
+}
+
+function updateTeam(req, res) {
+    Team.findByIdAndUpdate(req.params.id, req.body, function(err) {
+        res.redirect(`/teams/${req.params.id}`);
     })
 }

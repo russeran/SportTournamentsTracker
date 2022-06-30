@@ -13,6 +13,7 @@
         <tbody>
             <% teams.forEach(function(team) { %>
                 <tr>
+                    <td><a href="/teams/<%= team.id %>/edit">Edit</a></td>
                     <td>
                         <%= team.name %>
                     </td>
@@ -27,7 +28,9 @@
                     </td>
 
                     <td><a href="/teams/<%= team.id %>">View Details</a></td>
-                    <form action="/teams/<%= team.id%>?_method=DELETE" method="POST"> <button type="submit">DELETE</button></form>
+                    <td>
+                        <form action="/teams/<%= team.id%>?_method=DELETE" method="POST"> <button type="submit">DELETE</button></form>
+                    </td>
                 </tr>
                 <% }); %>
 
