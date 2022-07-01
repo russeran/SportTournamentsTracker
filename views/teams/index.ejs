@@ -1,10 +1,12 @@
 <%- include('../partials/header') %>
-
+    <br>
+    <br>
     <table id="allteams" class="table">
         <thead>
             <tr>
+                <th>Avatar</th>
+                <th>User Name</th>
                 <th>Team</th>
-                <th>WC Title</th>
                 <th>Group</th>
                 <th>Continent</th>
                 <th>Details</th>
@@ -13,12 +15,17 @@
         <tbody>
             <% teams.forEach(function(team) { %>
                 <tr>
-                    <td><a href="/teams/<%= team.id %>/edit">Edit</a></td>
                     <td>
-                        <%= team.name %>
+                        <% if (user && user._id.equals(team.user)) { %>
+                            <a href="/teams/<%= team._id %>/edit">Edit Team</a>
+                            <% } %>
+                    </td>
+                    <td><img class="avatarImg" alt="avatar" src="<%= team.userAvatar %>" referrerpolicy="no-referrer"></td>
+                    <td>
+                        <%= team.userName %>
                     </td>
                     <td>
-                        <%= team.worldCupTitles %>
+                        <%= team.name %>
                     </td>
                     <td>
                         <%= team.group %>
@@ -28,9 +35,13 @@
                     </td>
 
                     <td><a href="/teams/<%= team.id %>">View Details</a></td>
-                    <td>
-                        <form action="/teams/<%= team.id%>?_method=DELETE" method="POST"> <button type="submit">DELETE</button></form>
-                    </td>
+                    <% if (user && user._id.equals(team.user)) { %>
+                        <td>
+                            <form action="/teams/<%= team.id %>?_method=DELETE" class="delete-form" method="POST">
+                                <button type="submit">DELETE</button>
+                            </form>
+                        </td>
+                        <% } %>
                 </tr>
                 <% }); %>
 

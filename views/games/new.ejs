@@ -1,24 +1,27 @@
 <%- include('../partials/header') %>
-
-    <form class="new-game" action="/teams/<%= teamId  %>/games" method="POST">
-        <label for="">Date</label>
-        <input type="datetime-local" name="date">
-        <label for="">Opponent</label>
-        <input type="text" name="team2">
-        <label for=""></label>
-        <select name="stadium" id="">
-<option value="Vodafone Park">'Vodafone Park'</option>
-<option value="Camp Nou">'Camp Nou'</option>
-<option value="Barnabeu">'Barnabeu'</option>
-<option value="Anfield">'Anfield'</option>
-<option value="St. Jame's">"St. James's"</option>
-<option value="Old Trafford">'Old Trafford'</option>
-<option value="Etihad">'Etihad'</option>
-<option value="Emirates">'Emirates'</option>
-<option value="Allianz Arena">'Allianz Arena'</option>
+    <br>
+    <br>
+    <div class="edit">
+        <form class="new-game" action="/teams/<%= teamId  %>/games" method="POST">
+            <label for="">Date</label>
+            <input type="datetime-local" name="date"><br>
+            <label for="">Opponent</label>
+            <input type="text" name="team2"><br>
+            <label for="">Stadium</label>
+            <select name="stadium" id="">
+<option value="Vodafone Park">Vodafone Park</option>
+<option value="Camp Nou">Camp Nou</option>
+<option value="Barnabeu">Barnabeu</option>
+<option value="Anfield">Anfield</option>
+<option value="St. Jame's">St. James's</option>
+<option value="Old Trafford">Old Trafford</option>
+<option value="Etihad">Etihad</option>
+<option value="Emirates">Emirates</option>
+<option value="Allianz Arena">Allianz Arena</option>
 </select>
-        <input type="submit" value="Add New Game">
 
+            <input type="submit" value="Add New Game">
+    </div>
     </form>
 
 

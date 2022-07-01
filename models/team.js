@@ -45,6 +45,12 @@ const teamSchema = new Schema({
         type: String,
         enum: ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
     },
+
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userName: String,
+    userAvatar: String,
+
+
     players: [playerSchema]
 
 }, {

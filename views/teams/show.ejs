@@ -1,140 +1,136 @@
 <%- include('../partials/header') %>
-    <div class="parent">
-        <div class="div1">
+    <br>
+    <br>
+    <div class="div1">
 
-            <div class="div2">
-                <table class="team-info">
+        <div class="div2">
+            <table class="table">
+                <tr></tr>
+                <tr>
+                    <td>
+                        <h3>Team Name:</h3>
+                    </td>
+                    <td>
+                        <h3>
+                            <%= team.name %>
+                        </h3>
+                    </td>
 
+                    <td>
+                        <h3>Group:</h3>
+                    </td>
+                    <td>
+                        <h3>
+                            <%= team.group %>
+                        </h3>
+                    </td>
+
+                    <td>
+                        <h3>Continent:</h3>
+                    </td>
+                    <td>
+                        <h3>
+                            <%= team.continent %>
+                        </h3>
+                    </td>
+                </tr>
+                <tr></tr>
+            </table>
+        </div>
+
+        <div class="div3">
+            <table class="table tab">
+                <thead>
+                    <h2>TOURNAMENT SCHEDULE <button><a href="/teams/<%=team._id%>/games/new">NEW GAME</a></button></h2>
+                    <th>
+                        <h3>Game Date</h3>
+                    </th>
+                    <th>
+                        <h3>Opponent</h3>
+                    </th>
+                    <th>
+                        <h3>Stadium</h3>
+                    </th>
+
+                </thead>
+                <% games.forEach(function(game) { %>
                     <tr>
                         <td>
-                            <h3>Team Name:</h3>
+                            <%= game.date %>
                         </td>
                         <td>
-                            <h3>
-                                <%= team.name %>
-                            </h3>
+                            <%= game.team2 %>
                         </td>
+                        <td>
+                            <%= game.stadium %>
+                        </td>
+
                     </tr>
-                    <tr>
-                        <td>
-                            <h3>World Cup Title:</h3>
-                        </td>
-                        <td>
-                            <h3>
-                                <%= team.worldCupTitles %>
-                            </h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3>Group:</h3>
-                        </td>
-                        <td>
-                            <h3>
-                                <%= team.group %>
-                            </h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3>Continent:</h3>
-                        </td>
-                        <td>
-                            <h3>
-                                <%= team.continent %>
-                            </h3>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div3">
-                <h2>TEAM PLAYER LIST</h2>
-                <form method="POST" action="/teams/<%= team._id %>/players">
-                    <label for="">Player Name</label>
-                    <input name="name" type="text">
-                    <label for="">Age</label>
-                    <input name="age" type="number">
-                    <label for="">Position</label>
-                    <select name="position" id="">
+                    <% }); %>
+
+            </table>
+
+
+        </div>
+
+    </div>
+    <br>
+    <div class="div4">
+
+
+        <form method="POST" action="/teams/<%= team._id %>/players">
+            <h2>TEAM PLAYER LIST</h2>
+            <label for="">Player Name</label>
+            <input name="name" type="text">
+            <label for="">Age</label>
+            <input name="age" type="number"><br>
+            <label for="">Position</label>
+            <select name="position" id="">
     <option value="Goalkeeper">Goalkeeper</option>
     <option value="Defender">Defender</option>
     <option value="Midfielder">Midfielder</option>
     <option value="Forward">Forward</option>
 </select>
-                    <label for="">Current Team</label>
-                    <input name="currentTeam" type="text">
+            <label for="">Current Team</label>
+            <input name="currentTeam" type="text"><br>
 
-                    <button><input type="submit" value="ADD"></button>
-                </form>
-                <% if (team.players.length) { %>
-                    <table class="table" id="player-info">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Position</th>
-                                <th>Current Team</th>
-                            </tr>
+            <button><input type="submit" value="ADD PLAYER"></button>
+        </form>
+        <% if (team.players.length) { %>
+            <table class="table" id="player-info">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Current Team</th>
+                    </tr>
 
-                        </thead>
-                        <tbody>
-                            <% team.players.forEach(function(player) { %>
-                                <tr>
-                                    <td>
-                                        <%= player.name %>
-                                    </td>
-                                    <td>
-                                        <%= player.age %>
-                                    </td>
-                                    <td>
-                                        <%= player.position %>
-                                    </td>
-                                    <td>
-                                        <%= player.currentTeam %>
-                                    </td>
-                                </tr>
-                                <% }); %>
-
-                        </tbody>
-                    </table>
-                    <% } else { %>
-                        <h4> No Player Yet</h4>
-                        <% } %>
-            </div>
-            <div class="div4">
-                <table>
-                    <thead>
-                        <th>
-                            <h3>Game Date</h3>
-                        </th>
-                        <th>
-                            <h3>Opponent</h3>
-                        </th>
-                        <th>
-                            <h3>Stadium</h3>
-                        </th>
-                    </thead>
-                    <% games.forEach(function(game) { %>
+                </thead>
+                <tbody>
+                    <% team.players.forEach(function(player) { %>
                         <tr>
                             <td>
-                                <%= game.date %>
+                                <%= player.name %>
                             </td>
                             <td>
-                                <%= game.team2 %>
+                                <%= player.age %>
                             </td>
                             <td>
-                                <%= game.stadium %>
+                                <%= player.position %>
+                            </td>
+                            <td>
+                                <%= player.currentTeam %>
                             </td>
                         </tr>
                         <% }); %>
 
-                </table>
-
-                <button><a href="/teams/<%=team._id%>/games/new">ADD NEW GAME</a></button>
-
-            </div>
-            <div class="div5"> </div>
-        </div>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h4> No Player Yet</h4>
+                <% } %>
     </div>
+
 
     <%- include('../partials/footer')  %>

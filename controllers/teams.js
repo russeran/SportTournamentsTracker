@@ -16,6 +16,9 @@ function newTeam(req, res) {
 }
 
 function create(req, res) {
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key]
     }
@@ -24,7 +27,7 @@ function create(req, res) {
         if (err) {
             return res.redirect('/teams/new');
         }
-        res.redirect('/teams');
+        res.redirect(`/teams/${team._id}`);
     })
 
 }
@@ -37,7 +40,7 @@ function index(req, res) {
 
 function show(req, res) {
     Team.findById(req.params.id, function(err, team) {
-        Game.find({ team: team._id }, function(err, games) {
+        Game.find({ _id: { $nin: team.members }, user: req.user._id }, function(err, games) {
             res.render('teams/show', { team, games });
         });
     })
